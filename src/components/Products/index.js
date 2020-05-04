@@ -201,7 +201,7 @@ export default function Products () {
                                 <td>{product.product_life}</td>
                                 <td><FiTrash2 onClick={() => handleDeleteProduct(product.id)} /></td>
                             </tr>
-                        ))}
+                        )) && products.length > 0}
 
                         {/* <tr>
                             <td>1</td>
