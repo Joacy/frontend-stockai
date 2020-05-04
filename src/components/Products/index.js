@@ -190,7 +190,7 @@ export default function Products () {
                         </tr>
                     </thead>
                     <tbody>
-                        {products.map(product => (
+                        {/* {products.map(product => (
                             <tr key={product.id}>
                                 <td>{product.id}</td>
                                 <td>{product.product_code}</td>
@@ -201,7 +201,7 @@ export default function Products () {
                                 <td>{product.product_life}</td>
                                 <td><FiTrash2 onClick={() => handleDeleteProduct(product.id)} /></td>
                             </tr>
-                        )) && products.length > 0}
+                        )) && products.length > 0} */}
 
                         <tr>
                             <td>1</td>
