@@ -1,0 +1,59 @@
+.container-welcome {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    padding: 50px 15px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    height: 100vh;
+    position: relative;
+}
+
+.container-welcome .back-link {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: #0c87f2;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.container-welcome .back-link:hover {
+    color: #0c87f2dd;
+    transition: 0.3s;
+}
+
+.container-welcome h1 {
+    font-size: 36px;
+    color: #432b96;
+    font-weight: 600;
+}
+
+.container-welcome img {
+    width: 480px;
+    max-width: 90%;
+    height: auto;
+    background: #269aff;
+    margin: 30px auto;
+}
+.container-welcome h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #269aff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+a.regMarget {
+    color: #269aff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+a.regMarget:hover {
+    color: #269affdd;
+    transition: 0.3s;
+}

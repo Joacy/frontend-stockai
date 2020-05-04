@@ -1,0 +1,85 @@
+.container-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 15px;
+    width: 100%;
+    height: 100vh;
+    background: url("../../assets/bg-login.jpg") center no-repeat;
+    background-size: cover;
+}
+
+.container-login .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 10px;
+    border-radius: 14px;
+    margin-bottom: 70px;
+}
+
+.container-login .logo img {
+    width: 250px;
+    height: auto;
+    object-fit: contain;
+}
+
+.container-login form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.container-login form input {
+    background: transparent;
+    width: 100%;
+    padding: 10px 0;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #f2d30c;
+    font-family: "Montserrat", sans-serif;
+}
+
+.container-login form input::placeholder {
+    font-weight: 600;
+    color: #f2d30c;
+}
+
+button.button-login {
+    width: 90%;
+    background: transparent;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+    border: 2px solid #f2d30c;
+    border-radius: 4px;
+    padding: 15px 25px;
+    margin: 10px 0px;
+    cursor: pointer;
+}
+
+button.button-login:hover {
+    background: #f2d30c;
+    transition: 0.3s;
+}
+
+a.back-link {
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+}
+
+a.back-link:hover {
+    color: #ffffffdd;
+    transition: 0.3s;
+}

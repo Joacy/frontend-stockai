@@ -1,0 +1,27 @@
+.reports-panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 15px 25px;
+    background: linear-gradient(
+        180deg,
+        #221475 0%,
+        #221475 400px,
+        rgba(241, 243, 249, 1) 400px,
+        rgba(241, 243, 249, 1) 100%
+    );
+}
+
+.reports-panel span.page {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    font-size: 25px;
+    padding: 25px 0;
+}
+
+.reports-panel span.page h2 {
+    margin: 0;
+    margin-left: 10px;
+    font-size: 25px;
+}
