@@ -203,7 +203,7 @@ export default function Products () {
                             </tr>
                         )) && products.length > 0}
 
-                        {/* <tr>
+                        <tr>
                             <td>1</td>
                             <td>Table cell</td>
                             <td>Molho de Tomate - Tarantella</td>
@@ -302,7 +302,7 @@ export default function Products () {
                             <td>Table cell</td>
                             <td>Table cell</td>
                             <td><FiTrash2 /></td>
-                        </tr> */}
+                        </tr>
 
                     </tbody>
                 </Table>
