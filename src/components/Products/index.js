@@ -45,7 +45,7 @@ function RegisterProductModal (props) {
         try {
             const response = await api.post(`${dominio}/produto`, data, {
                 headers: {
-                    Authorization: token,
+                    Authorization: `Bearer ${token}`,
                 }
             });
 
