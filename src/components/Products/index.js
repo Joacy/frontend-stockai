@@ -20,7 +20,7 @@ function RegisterProductModal (props) {
     const history = useHistory();
 
     const dominio = localStorage.getItem('dominio');
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('access_token');
 
     const [product_code, setProductCode] = useState('');
     const [product_name, setProductName] = useState('');
@@ -134,16 +134,25 @@ export default function Products () {
     const [products, setProducts] = useState([]);
 
     const dominio = localStorage.getItem('dominio');
+    const token = localStorage.getItem('access_token');
 
     useEffect(() => {
-        api.get(`${dominio}/produto`).then(response => {
+        api.get(`${dominio}/produto`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        }).then(response => {
             setProducts(response.data);
         })
-    }, [dominio]);
+    }, [dominio, token]);
 
     async function handleDeleteProduct (id) {
         try {
-            await api.delete(`${dominio}/produto/${id}`);
+            await api.delete(`${dominio}/produto/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            });
 
             setProducts(products.filter(product => product.id !== id));
         } catch (error) {
