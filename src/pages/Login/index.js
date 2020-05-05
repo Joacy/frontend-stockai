@@ -30,10 +30,11 @@ export default function Login () {
 
             console.log(response.data.data);
 
+            localStorage.setItem('token', response.data.data.token);
             localStorage.setItem('userId', response.data.data.user.id);
             localStorage.setItem('name', response.data.data.user.name);
-            localStorage.setItem('dominio', response.data.data.user.dominio);
-            localStorage.setItem('nome_estabelecimento', response.data.data.user.nome_estabelecimento);
+            localStorage.setItem('dominio', response.data.data.unidade_negocio.dominio);
+            localStorage.setItem('nome_estabelecimento', response.data.data.unidade_negocio.nome);
 
             history.push('/home');
         } catch (error) {

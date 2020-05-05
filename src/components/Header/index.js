@@ -18,8 +18,8 @@ import './styles.css';
 export default function Header () {
     const history = useHistory();
 
-    const token = localStorage.getItem('access_token');
-    
+    const token = localStorage.getItem('token');
+
     async function handleLogout () {
         try {
             await api.get('auth/logout', {
