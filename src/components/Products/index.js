@@ -41,7 +41,7 @@ function RegisterProductModal (props) {
         };
 
         try {
-            const response = await api.post(`${userId}/produto`, data);
+            const response = await api.post(`${userId}/product`, data);
 
             history.push('/home');
         } catch (error) {
@@ -127,36 +127,24 @@ export default function Products () {
     const [modalShow, setModalShow] = useState(false);
     const [products, setProducts] = useState([]);
 
+    const name = localStorage.getItem('name');
     const userId = localStorage.getItem('userId');
 
     useEffect(() => {
-        api.get(`${userId}/produto`).then(response => {
+        api.get(`${userId}/product`).then(response => {
             setProducts(response.data);
         })
     }, [userId]);
 
     async function handleDeleteProduct (id) {
         try {
-            await api.delete(`${userId}/produto/${id}`);
+            await api.delete(`${userId}/product/${id}`);
 
             setProducts(products.filter(product => product.id !== id));
         } catch (error) {
             alert('Erro ao deletar produto, tente novamente.')
         }
     }
-
-    var productList = products.map(product => (
-        <tr key={product.id}>
-            <td>{product.id}</td>
-            <td>{product.product_code}</td>
-            <td>{product.product_name}</td>
-            <td>{product.product_qtd}</td>
-            <td>{product.product_buy_value}</td>
-            <td>{product.product_sale_value}</td>
-            <td>{product.product_life}</td>
-            <td><FiTrash2 onClick={() => handleDeleteProduct(product.id)} /></td>
-        </tr>
-    ));
 
     return (
         <div className="products-panel">
@@ -202,9 +190,20 @@ export default function Products () {
                         </tr>
                     </thead>
                     <tbody>
-                        {productList}
+                        {products.map(product => (
+                            <tr key={product.id}>
+                                <td>{product.id}</td>
+                                <td>{product.product_code}</td>
+                                <td>{product.product_name}</td>
+                                <td>{product.product_qtd}</td>
+                                <td>{product.product_buy_value}</td>
+                                <td>{product.product_sale_value}</td>
+                                <td>{product.product_life}</td>
+                                <td><FiTrash2 onClick={() => handleDeleteProduct(product.id)} /></td>
+                            </tr>
+                        )) && products.length > 0}
 
-                        {/* <tr>
+                        <tr>
                             <td>1</td>
                             <td>Table cell</td>
                             <td>Molho de Tomate - Tarantella</td>
@@ -303,7 +302,7 @@ export default function Products () {
                             <td>Table cell</td>
                             <td>Table cell</td>
                             <td><FiTrash2 /></td>
-                        </tr> */}
+                        </tr>
 
                     </tbody>
                 </Table>
