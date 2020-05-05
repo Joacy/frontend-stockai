@@ -69,6 +69,10 @@
     margin-right: 5px;
 }
 
+.home-panel .card-row .card:nth-child(2) h6 span {
+    color: #2dce98;
+}
+
 .home-panel .card-row i {
     position: absolute;
     top: 15px;

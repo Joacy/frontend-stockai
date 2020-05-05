@@ -19,7 +19,7 @@ import './styles.css';
 function RegisterProductModal (props) {
     const history = useHistory();
 
-    const userId = localStorage.getItem('userId');
+    const dominio = localStorage.getItem('dominio');
 
     const [product_code, setProductCode] = useState('');
     const [product_name, setProductName] = useState('');
@@ -41,7 +41,7 @@ function RegisterProductModal (props) {
         };
 
         try {
-            const response = await api.post(`${userId}/product`, data);
+            const response = await api.post(`${dominio}/produto`, data);
 
             history.push('/home');
         } catch (error) {
@@ -127,18 +127,17 @@ export default function Products () {
     const [modalShow, setModalShow] = useState(false);
     const [products, setProducts] = useState([]);
 
-    const name = localStorage.getItem('name');
-    const userId = localStorage.getItem('userId');
+    const dominio = localStorage.getItem('dominio');
 
     useEffect(() => {
-        api.get(`${userId}/product`).then(response => {
+        api.get(`${dominio}/produto`).then(response => {
             setProducts(response.data);
         })
-    }, [userId]);
+    }, [dominio]);
 
     async function handleDeleteProduct (id) {
         try {
-            await api.delete(`${userId}/product/${id}`);
+            await api.delete(`${dominio}/produto/${id}`);
 
             setProducts(products.filter(product => product.id !== id));
         } catch (error) {
@@ -201,9 +200,9 @@ export default function Products () {
                                 <td>{product.product_life}</td>
                                 <td><FiTrash2 onClick={() => handleDeleteProduct(product.id)} /></td>
                             </tr>
-                        )) && products.length > 0}
+                        ))}
 
-                        <tr>
+                        {/* <tr>
                             <td>1</td>
                             <td>Table cell</td>
                             <td>Molho de Tomate - Tarantella</td>
@@ -302,7 +301,7 @@ export default function Products () {
                             <td>Table cell</td>
                             <td>Table cell</td>
                             <td><FiTrash2 /></td>
-                        </tr>
+                        </tr> */}
 
                     </tbody>
                 </Table>
