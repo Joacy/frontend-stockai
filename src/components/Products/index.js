@@ -20,6 +20,7 @@ function RegisterProductModal (props) {
     const history = useHistory();
 
     const dominio = localStorage.getItem('dominio');
+    const token = localStorage.getItem('token');
 
     const [product_code, setProductCode] = useState('');
     const [product_name, setProductName] = useState('');
@@ -32,16 +33,21 @@ function RegisterProductModal (props) {
         e.preventDefault();
 
         const data = {
-            product_code,
-            product_name,
-            product_qtd,
-            product_buy_value,
-            product_sale_value,
-            product_life,
+            categoria_id: 1,
+            codigo: product_code,
+            nome: product_name,
+            qtd_estoque: product_qtd,
+            valor_custo: product_buy_value,
+            valor_venda: product_sale_value,
+            data_validade: product_life,
         };
 
         try {
-            const response = await api.post(`${dominio}/produto`, data);
+            const response = await api.post(`${dominio}/produto`, data, {
+                headers: {
+                    Authorization: token,
+                }
+            });
 
             history.push('/home');
         } catch (error) {
@@ -192,12 +198,12 @@ export default function Products () {
                         {products.map(product => (
                             <tr key={product.id}>
                                 <td>{product.id}</td>
-                                <td>{product.product_code}</td>
-                                <td>{product.product_name}</td>
-                                <td>{product.product_qtd}</td>
-                                <td>{product.product_buy_value}</td>
-                                <td>{product.product_sale_value}</td>
-                                <td>{product.product_life}</td>
+                                <td>{product.codigo}</td>
+                                <td>{product.nome}</td>
+                                <td>{product.qtd_estoque}</td>
+                                <td>{product.valor_custo}</td>
+                                <td>{product.valor_venda}</td>
+                                <td>{product.data_validade}</td>
                                 <td><FiTrash2 onClick={() => handleDeleteProduct(product.id)} /></td>
                             </tr>
                         ))}

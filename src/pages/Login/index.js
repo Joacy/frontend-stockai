@@ -15,7 +15,7 @@ export default function Login () {
         e.preventDefault();
 
         const data = {
-            email,
+            login: email,
             password,
         };
 
