@@ -11,6 +11,8 @@ export default function Login () {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const token = localStorage.getItem('access_token');
+
     async function handleLogin (e) {
         e.preventDefault();
 
@@ -20,17 +22,18 @@ export default function Login () {
         };
 
         try {
-            const response = await api.post('auth/login', data);
+            const response = await api.post('auth/login', data, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            });
 
-            console.log(response.data);
+            console.log(response.data.data);
 
-            localStorage.setItem('token', response.data.token);
-            localStorage.setItem('userId', response.data.user.id);
-            localStorage.setItem('name', response.data.user.name);
-            localStorage.setItem('dominio', response.data.user.dominio);
-            localStorage.setItem('nome_estabelecimento', response.data.user.nome_estabelecimento);
-
-            console.log(localStorage.token);
+            localStorage.setItem('userId', response.data.data.user.id);
+            localStorage.setItem('name', response.data.data.user.name);
+            localStorage.setItem('dominio', response.data.data.user.dominio);
+            localStorage.setItem('nome_estabelecimento', response.data.data.user.nome_estabelecimento);
 
             history.push('/home');
         } catch (error) {

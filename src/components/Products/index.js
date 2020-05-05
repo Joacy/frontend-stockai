@@ -142,7 +142,7 @@ export default function Products () {
                 Authorization: `Bearer ${token}`,
             }
         }).then(response => {
-            setProducts(response.data);
+            setProducts(response.data.data);
         })
     }, [dominio, token]);
 
